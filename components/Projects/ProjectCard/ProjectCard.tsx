@@ -31,7 +31,7 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectProps>(
   ): JSX.Element => {
     return (
       <div
-        className="flex flex-col space-y-8 rounded-xl border-[1px] border-tertiary bg-secondary/50 p-4 md:h-48 md:flex-row md:space-y-0 md:space-x-8"
+        className="flex flex-col space-y-8 rounded-xl border-[1px] border-tertiary bg-secondary/50 p-4 md:flex-row md:space-y-0 md:space-x-8 md:min-h-[12rem] md:h-auto"
         ref={ref}
       >
         <div className="overflow-hidden rounded-lg md:w-72">
@@ -70,10 +70,12 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectProps>(
               )}
             </div>
           </div>
-          <Link href={`/projects/${slug}`} className="mt-4" gradientUnderline>
-            <p className="sr-only">Learn more about {name}</p>
-            Learn More
-          </Link>
+          <div className="mt-4 w-full overflow-hidden text-ellipsis whitespace-nowrap">
+            <Link href={`/projects/${slug}`} gradientUnderline>
+              <p className="sr-only">Learn more about {name}</p>
+              Learn More
+            </Link>
+          </div>
         </div>
       </div>
     );

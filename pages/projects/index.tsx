@@ -53,9 +53,14 @@ const ProjectsPage: NextPage<ProjectsPageProps> = ({
 };
 
 export const getStaticProps: GetStaticProps = async () => {
+  // Filter out Open Source projects (Meshery and OpenTelemetry)
+  const filteredProjects = allProjects.filter(
+    project => project.slug !== "meshery" && project.slug !== "opentelemetry"
+  );
+  
   const allProjectsWithPlaceholderImages = [];
 
-  for (const project of allProjects) {
+  for (const project of filteredProjects) {
     const previewUrl = await getPreviewImageUrl(project.image.url);
 
     allProjectsWithPlaceholderImages.push({

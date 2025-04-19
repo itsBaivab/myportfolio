@@ -5,7 +5,7 @@
   "scripts": {
     "prepare": "husky install",
     "dev": "next dev",
-    "prebuild": "yarn gen:hashnode",
+    "prebuild": "yarn gen:hashnode && yarn gen:medium",
     "build": "next build",
     "start": "next start",
     "lint": "eslint '{components,pages,utils,data,layouts}/**/*.{js,jsx,ts,tsx}'",
@@ -13,7 +13,8 @@
     "format": "prettier --check \"{components,data,pages,styles,utils,layouts}/**/*.{js,jsx,ts,tsx,css,scss,json,yaml,md}\"",
     "format:fix": "prettier --write \"{components,data,pages,styles,utils,layouts}/**/*.{js,jsx,ts,tsx,css,scss,json,yaml,md}\"",
     "types:check": "tsc --pretty --noEmit",
-    "gen:hashnode": "ts-node scripts/gen-hashnode-data.ts"
+    "gen:hashnode": "ts-node scripts/gen-hashnode-data.ts",
+    "gen:medium": "ts-node scripts/gen-medium-data.ts"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
@@ -44,6 +45,7 @@
     "@tailwindcss/forms": "^0.5.2",
     "@tailwindcss/typography": "^0.5.2",
     "@types/lqip-modern": "^1.1.2",
+    "@types/xml2js": "^0.4.14",
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
     "contentlayer": "^0.2.5",
@@ -72,6 +74,7 @@
     "rehype-slug": "^5.0.1",
     "sharp": "^0.30.7",
     "shiki": "^0.10.1",
+    "xml2js": "^0.6.2",
     "zustand": "^4.0.0-rc.1"
   }
 }

@@ -17,6 +17,10 @@ const navItems = [
     href: "/projects",
   },
   {
+    name: "Open Source",
+    href: "/open-source",
+  },
+  {
     name: "Achievements",
     href: "/achievements",
   },

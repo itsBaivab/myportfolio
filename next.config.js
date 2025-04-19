@@ -7,6 +7,8 @@ module.exports = withContentlayer({
       "c5eq9h7e.directus.app",
       "res.cloudinary.com",
       "cdn.hashnode.com",
+      "miro.medium.com",
+      "cdn-images-1.medium.com",
     ],
   },
 });

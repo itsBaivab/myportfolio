@@ -4,6 +4,7 @@ export interface CleanedAchievement {
   date?: string;
   proof?: Proof;
   content: string;
+  imagePath?: string; // Path to the achievement image
 }
 
 export interface Proof {

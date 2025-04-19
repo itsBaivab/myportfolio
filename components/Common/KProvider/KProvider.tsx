@@ -82,6 +82,21 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
       perform: () => push("/projects"),
     },
     {
+      id: "open-source",
+      name: "Open Source",
+      keywords: "open source contributions",
+      section: "Pages",
+      icon: <Code />,
+    },
+    {
+      id: "open-source-page",
+      name: "All Open Source Contributions",
+      keywords: "open source contributions",
+      shortcut: ["o"],
+      parent: "open-source",
+      perform: () => push("/open-source"),
+    },
+    {
       id: "blog",
       name: "Blog",
       keywords: "blogs blog post articles tutorials",
@@ -129,13 +144,26 @@ const KProvider = ({ children }: KProviderProps): JSX.Element => {
   });
 
   allProjects.map(project => {
-    actions.push({
-      id: project._id,
-      name: project.name,
-      perform: () => push("/projects/" + project.slug),
-      icon: <IconFactory name={project.iconName} />,
-      parent: "projects",
-    });
+    // For regular projects (not Meshery or OpenTelemetry)
+    if (project.slug !== "meshery" && project.slug !== "opentelemetry") {
+      actions.push({
+        id: project._id,
+        name: project.name,
+        perform: () => push("/projects/" + project.slug),
+        icon: <IconFactory name={project.iconName} />,
+        parent: "projects",
+      });
+    } 
+    // For open source projects (Meshery and OpenTelemetry)
+    else {
+      actions.push({
+        id: project._id,
+        name: project.name,
+        perform: () => push("/open-source/" + project.slug),
+        icon: <IconFactory name={project.iconName} />,
+        parent: "open-source",
+      });
+    }
   });
 
   hashnodeData.posts.map(post => {

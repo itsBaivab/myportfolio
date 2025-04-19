@@ -3,7 +3,6 @@ import NextImage from "next/image";
 
 import Link from "@/components/Shared/Link";
 import { allProjects, Project } from "contentlayer/generated";
-import IconFactory from "@/components/Shared/Icons/IconFactory";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import MDXComponents from "@/components/Common/MDXComponents";
 import CustomGiscus from "@/components/Shared/CustomGiscus";
@@ -42,15 +41,9 @@ const SkillPage: NextPage<ProjectPageProps> = ({
           ],
         }}
       />
-      <div className="mt-8 flex space-x-8">
-        <IconFactory
-          name={project.iconName}
-          className="h-16 w-16 rounded-xl bg-tertiary p-2 shadow-md"
-        />
-        <div className="flex flex-col space-y-2">
-          <h1 className="text-2xl font-bold">{project.name}</h1>
-          <p className="text-sm text-gray-300">{project.description}</p>
-        </div>
+      <div className="mt-8">
+        <h1 className="text-2xl font-bold">{project.name}</h1>
+        <p className="mt-2 text-sm text-gray-300">{project.description}</p>
       </div>
 
       <div className="mt-6 flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2">
@@ -104,6 +97,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  // Include ALL projects, including open source ones
   const paths = allProjects.map(project => ({
     params: { slug: project.slug },
   }));
