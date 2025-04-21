@@ -1,8 +1,10 @@
-import AchievementCard from "@/components/Achievements/AchievementCard";
+"use client";
+
 import { allAchievements } from "contentlayer/generated";
 import { GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
 import { CleanedAchievement } from "types/achievements";
+import { AnimatedAchievementsList } from "@/components/Achievements/AnimatedAchievementsList";
 
 // Map achievement slugs to image paths
 const achievementImages: Record<string, string> = {
@@ -19,25 +21,15 @@ interface AchievementPageProps {
 
 const AchievementsPage: NextPage<AchievementPageProps> = ({ achievements }) => {
   return (
-    <>
+    <div className="mt-8 mb-16">
       <NextSeo
         title="Achievements | Anish De"
         description="Anish De's Achievements"
       />
-      <h1 className="mb-8 text-2xl font-bold">Achievements</h1>
-      <div className="flex flex-col space-y-8">
-        {achievements.map(({ id, title, content, date, proof, imagePath }) => (
-          <AchievementCard
-            key={id}
-            title={title}
-            content={content}
-            date={date}
-            proof={proof}
-            imagePath={imagePath}
-          />
-        ))}
-      </div>
-    </>
+      <h1 className="text-3xl font-bold mb-8">Achievements</h1>
+      
+      <AnimatedAchievementsList achievements={achievements} />
+    </div>
   );
 };
 
